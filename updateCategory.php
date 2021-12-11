@@ -19,24 +19,7 @@ if($_SESSION['store_keeper']==NULL){
 		$query=mysqli_query($con,$q);
 		header('location:index.php');
 	}
-	// else if(isset($_POST['dlt'])){
-	// 	$id = $_GET['id'];
-	// 	$qr = mysqli_query($con,"select * from categorytb where id = $id");
 
-	//    $row=mysqli_fetch_array($qr);
-	//    	$var = $row['category_name'] ;
-	//    	$gq = mysqli_query($con,"select * from grocerytb where category = $var");
-	//    while($row1=mysqli_fetch_array($gq)){
-	//    	$id2 = $row1['id'];
- //     $dc = "delete from grocerytb where id = $id2";
- //     mysqli_query($con,$dc);
-	//    }
-	  
-	   
-	// $d = "delete from categorytb where id = $id ";
-	// mysqli_query($con,$d);
- //    header('location:index.php');
-	// }
 	else if(isset($_GET['id']))
 	{
 		$q = "SELECT * FROM categorytb WHERE id='".$_GET['id']."'";
@@ -98,8 +81,8 @@ value="<?php echo $res['category_description'];?>" />
 <?php
  if(isset($_POST['dlt'])){
  	$id = $_GET['id'];
- 	$d = "delete from grocerytb where category = '".$res['category_name']."' ";
- 	mysqli_query($con,$d);
+ 	// $d = "delete from grocerytb where category = '".$res['category_name']."' ";
+ 	// mysqli_query($con,$d);
  	$q = "delete from categorytb where id = $id";
  	mysqli_query($con,$q);
     header('location:index.php');

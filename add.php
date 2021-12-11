@@ -65,7 +65,7 @@ if($_SESSION['store_keeper']==NULL){
 				 $res=mysqli_query($con,"select * from categorytb");
 				 while($row=mysqli_fetch_array($res)){
 				 	// echo "<option value='category_name'>";
-				 	echo "<option value="; echo $row["category_name"]; echo ">";
+				 	echo "<option value="; echo $row["id"]; echo ">";
 					echo $row["category_name"];	
 					echo "</option>";
 				 }	
