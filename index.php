@@ -44,7 +44,9 @@ if($_SESSION['store_keeper']==NULL){
 				<h1>View Grocery List</h1>
 				<a href="add.php">Add Item</a>
                 <a style="padding-left: 40px;" href="logout.php">Logout</a>
+                <a style="padding-left: 40px;" href="addCategory.php">Add Category</a>
 			</div>
+			
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-8">
@@ -65,6 +67,14 @@ if($_SESSION['store_keeper']==NULL){
 					</div>
 				</div>
 			</div>
+			<div class="col-lg-8">
+				 <?php
+				 $res=mysqli_query($con,"select * from categorytb");
+				 while($row=mysqli_fetch_array($res)){ ?>
+				<a href="updateCategory.php?id=<?php echo $row['id']; ?>" style="color: green;"><?php echo $row["category_name"]; ?></a>
+				<a style="padding-left: 40px;"></a>
+                <?php } ?>
+			</div>
 		</div>
 
 		<!-- Grocery Cards -->
@@ -74,7 +84,7 @@ if($_SESSION['store_keeper']==NULL){
 				{
 			?>
 
-			<div class="col-lg-4">
+			<div class="col-md-3">
 				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">
@@ -111,9 +121,11 @@ if($_SESSION['store_keeper']==NULL){
 					</div>
 				</div><br>
 			</div>
+
 			<?php
 			}
 			?>
+			
 		</div>
 	</div>
 </body>

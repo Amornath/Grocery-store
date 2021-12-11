@@ -1,10 +1,12 @@
 <?php 
 include("connect.php");
+
 session_start();
 if($_SESSION['store_keeper']==NULL){
     header("location:login.php");
 } else {
 ?>
+
 
 <html>
 
@@ -54,6 +56,23 @@ if($_SESSION['store_keeper']==NULL){
 					</option>
 				</select>
 			</div>
+
+			<div class="form-group">
+				<label>Item category</label>
+				<select class="form-control"
+					name="category">
+				 <?php
+				 $res=mysqli_query($con,"select * from categorytb");
+				 while($row=mysqli_fetch_array($res)){
+				 	// echo "<option value='category_name'>";
+				 	echo "<option value="; echo $row["category_name"]; echo ">";
+					echo $row["category_name"];	
+					echo "</option>";
+				 }	
+                 ?>    
+
+				</select>
+			</div>
 			<div class="form-group">
 				<label>Date</label>
 				<input type="date"
@@ -76,13 +95,14 @@ if($_SESSION['store_keeper']==NULL){
 			$item_name=$_POST['iname'];
 			$item_qty=$_POST['iqty'];
 			$item_status=$_POST['istatus'];
+			$category = $_POST['category'];
 			$date=$_POST['idate'];
 	
 
 			$q="insert into grocerytb(Item_name,
-			Item_Quantity,Item_status,Date)
+			Item_Quantity,Item_status,Date, category)
 			values('$item_name',$item_qty,
-			'$item_status','$date')";
+			'$item_status','$date', '$category')";
 
 			mysqli_query($con,$q);
 			header("location:index.php");
